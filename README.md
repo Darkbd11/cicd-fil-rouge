@@ -55,12 +55,21 @@ docker run --rm -p 8000:8000 taskflow
 | `API_TOKEN` | Jeton exigé pour supprimer une tâche | vide (suppression désactivée) |
 | `NOTIFY_WEBHOOK_URL` | Webhook appelé à chaque création de tâche | vide (désactivé) |
 
+
+
 ## Équipe
 
-<!-- Lab J1 : remplacez par les noms du binôme -->
-- À compléter
+- Boulaye — [@Darkbd11](https://github.com/Darkbd11)
+- [@Daryl-6](https://github.com/Daryl-6)
+
 
 ## Gouvernance du dépôt
 
-<!-- Lab J1 : listez les règles activées sur main, pourquoi chacune, et ajoutez la capture du push refusé -->
-À compléter.
+La branche `main` est protégée par un ruleset actif.
+
+- Pull Request obligatoire (Permet de consulter les modifications avant leur intégration.)
+- Une approbation obligatoire (Nous avons mis 1) Impose une validation par un autre membre du binôme.
+- Force push interdit (Protège l'historique contre une réécriture forcée.)
+- Suppression de main interdite (Préserve la branche principale du projet.)
+
+![Refus du push direct sur main](docs/push-refuse.png)
