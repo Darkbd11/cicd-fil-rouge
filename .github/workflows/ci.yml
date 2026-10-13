@@ -73,4 +73,4 @@ jobs:
                       echo "La matrice n'a pas reussi : $TESTS_RESULT"
                       exit 1
                   fi
-                  echo "Tous les controles ont reussi.
+                  echo "Tous les controles ont reussi."
