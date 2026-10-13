@@ -78,3 +78,20 @@ La branche `main` est protégée par un ruleset actif.
 
 - Revue des Code Owners obligatoire pour les workflows : impose
   la validation d'un responsable avant de modifier le pipeline CI/CD.
+
+## Signature SSH des commits
+
+J'ai généré une clé SSH (publique + privée) sur ma machine, exporté la clé publique et ajoutée à mon profil GitHub.
+
+Commit de test signé : `809e0d9`
+
+👉 Le badge "Verified" apparaît sur ce commit. (voir image : docs/ssh.png)
+
+## Comment vérifier que les commits sont signés ?
+
+Vous pouvez vérifier que les commits sont signés en utilisant la commande 
+```bash
+git log --show-signature
+```
+
+👉 Vous devriez voir le badge "Verified" apparaître sur les commits signés.                                                         
