@@ -1,0 +1,5 @@
+# Responsables du fichier qui définit les propriétaires
+/.github/CODEOWNERS @Darkbd11 @Daryl-6
+
+# Responsables des workflows GitHub Actions
+/.github/workflows/ @Darkbd11 @Daryl-6

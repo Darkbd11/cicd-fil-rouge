@@ -73,3 +73,8 @@ La branche `main` est protégée par un ruleset actif.
 - Suppression de main interdite (Préserve la branche principale du projet.)
 
 ![Refus du push direct sur main](docs/push-refuse.png)
+
+![Demande Request de merge de la branche feat/equipe sur main](docs/Request.png)
+
+- Revue des Code Owners obligatoire pour les workflows : impose
+  la validation d'un responsable avant de modifier le pipeline CI/CD.
