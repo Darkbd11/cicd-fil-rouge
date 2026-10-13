@@ -1,0 +1,37 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+            - feat/ci-rapide
+    pull_request:
+        branches:
+            - main
+
+permissions:
+    contents: read
+
+jobs:
+    tests:
+        name: Tests
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+
+        steps:
+            - name: Recuperer le code
+              uses: actions/checkout@v7
+
+            - name: Installer Python
+              uses: actions/setup-python@v7
+              with:
+                  python-version: "3.11"
+
+            - name: Installer les dependances
+              run: python -m pip install -r requirements-dev.txt
+
+            - name: Verifier le code avec Ruff
+              run: python -m ruff check .
+
+            - name: Executer les tests
+              run: python -m pytest -q
