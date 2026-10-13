@@ -87,11 +87,4 @@ Commit de test signé : `809e0d9`
 
 👉 Le badge "Verified" apparaît sur ce commit. (voir image : docs/ssh.png)
 
-## Comment vérifier que les commits sont signés ?
 
-Vous pouvez vérifier que les commits sont signés en utilisant la commande 
-```bash
-git log --show-signature
-```
-
-👉 Vous devriez voir le badge "Verified" apparaître sur les commits signés.                                                         
