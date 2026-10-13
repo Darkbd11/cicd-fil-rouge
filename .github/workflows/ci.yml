@@ -12,20 +12,33 @@ on:
 permissions:
     contents: read
 
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
 jobs:
     tests:
-        name: Tests
+        name: Tests (Python ${{ matrix.python-version }})
         runs-on: ubuntu-latest
         timeout-minutes: 10
+
+        strategy:
+            fail-fast: false
+            matrix:
+                python-version: ["3.11", "3.12", "3.13"]
 
         steps:
             - name: Recuperer le code
               uses: actions/checkout@v7
 
-            - name: Installer Python
+            - name: Installer Python et restaurer le cache pip
               uses: actions/setup-python@v7
               with:
-                  python-version: "3.11"
+                  python-version: ${{ matrix.python-version }}
+                  cache: pip
+                  cache-dependency-path: |
+                      requirements.txt
+                      requirements-dev.txt
 
             - name: Installer les dependances
               run: python -m pip install -r requirements-dev.txt
@@ -33,5 +46,14 @@ jobs:
             - name: Verifier le code avec Ruff
               run: python -m ruff check .
 
-            - name: Executer les tests
-              run: python -m pytest -q
+            - name: Executer les tests et generer le rapport
+              run: python -m pytest -q --junitxml=reports/pytest.xml
+
+            - name: Conserver le rapport de tests
+              if: always()
+              uses: actions/upload-artifact@v7
+              with:
+                  name: pytest-python-${{ matrix.python-version }}
+                  path: reports/pytest.xml
+                  if-no-files-found: error
+                  retention-days: 7
